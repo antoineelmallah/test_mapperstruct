@@ -10,10 +10,13 @@ import java.math.BigDecimal;
 public class OrderItem {
     private Product product;
     private Integer quantity;
-    private BigDecimal value;
     public BigDecimal getTotalValue() {
-        if (value == null || quantity == null)
+        if (product == null)
             return BigDecimal.ZERO;
-        return BigDecimal.valueOf(quantity).multiply(value);
+        if (product.getPrice() == null)
+            return BigDecimal.ZERO;
+        if (quantity == null)
+            return BigDecimal.ZERO;
+        return BigDecimal.valueOf(quantity).multiply(product.getPrice());
     }
 }

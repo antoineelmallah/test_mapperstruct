@@ -37,7 +37,6 @@ public class OrderController {
                                 .name("Produto 1")
                                 .price(new BigDecimal("20.5"))
                                 .build())
-                        .value(new BigDecimal("100"))
                         .quantity(2)
                         .build(),
                 OrderItem.builder()
@@ -46,7 +45,6 @@ public class OrderController {
                                 .name("Produto 2")
                                 .price(new BigDecimal("100.1"))
                                 .build())
-                        .value(new BigDecimal("150"))
                         .quantity(1)
                         .build(),
                 OrderItem.builder()
@@ -55,7 +53,6 @@ public class OrderController {
                                 .name("Produto 3")
                                 .price(new BigDecimal("5.8"))
                                 .build())
-                        .value(new BigDecimal("90"))
                         .quantity(4)
                         .build()
         );

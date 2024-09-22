@@ -1,25 +1,30 @@
 package com.example.demo.mapper;
 
+import com.example.demo.component.ProductComponent;
 import com.example.demo.dto.ReportDTO;
 import com.example.demo.dto.ReportItem;
 import com.example.demo.pojo.Order;
 import com.example.demo.pojo.OrderItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Mapper(componentModel = "spring")
-public interface ReportMapper {
+public abstract class ReportMapper {
+
+    @Autowired
+    protected ProductComponent productComponent;
 
     @Mapping(target = "itemCount", expression = "java(itemCount(order))")
     @Mapping(source = "saleDate", target = "date")
     @Mapping(source = "total", target = "totalValue")
-    ReportDTO build(Order order);
+    public abstract ReportDTO build(Order order);
 
-    @Mapping(target = "product", expression = "java(item.getProduct().getName())")
+    @Mapping(target = "product", expression = "java(productComponent.buildReportDisplayName(item.getProduct()))")
     @Mapping(source = "totalValue", target = "total")
-    ReportItem build(OrderItem item);
+    public abstract ReportItem build(OrderItem item);
 
-    default int itemCount(Order order) {
+    public int itemCount(Order order) {
         return order.getItems().size();
     }
 
