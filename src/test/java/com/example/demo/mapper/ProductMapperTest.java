@@ -1,22 +1,17 @@
 package com.example.demo.mapper;
 
-import com.example.demo.pojo.Product;
 import com.example.demo.dto.ProductDTO;
+import com.example.demo.pojo.Product;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mapstruct.factory.Mappers;
-import org.mockito.Spy;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@ExtendWith(MockitoExtension.class)
 class ProductMapperTest {
 
-    @Spy
-    private ProductMapper mapper = Mappers.getMapper(ProductMapper.class);
+    private final ProductMapper mapper = Mappers.getMapper(ProductMapper.class);
 
     @Test
     void testMapping() {
